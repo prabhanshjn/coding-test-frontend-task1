@@ -1,6 +1,6 @@
 # coding-test-frontend-task1
 
-Create a responsive webpage based on the given template.
+Modify the given template to create a responsive webpage.
 
 Expected layout:
 ![layout](layout.png "layout")
