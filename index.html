@@ -7,6 +7,10 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/3957ecbabc.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>My Webpage</title>
 
@@ -16,15 +20,14 @@
         height: 100%;
       }
       body {
-        font-family: Arial, sans-serif;
-        font-size: 12px;
-        height: 100%;
-        min-height: 100vh;
         position: relative;
-        display: flex;
-        flex-direction: column;
+        min-height: 100vh;
       }
-
+      footer {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+      }
       @media (min-width: 1280px) {
       }
     </style>
@@ -32,66 +35,120 @@
     <script type="text/javascript">
       const onMenuClick = () => {
         const nav = document.getElementById("nav");
-        if (nav) nav.classList.toggle("hidden");
+        const icon = document.getElementById("nav-icon");
+
+        if (nav.classList.contains("hidden")) {
+          nav.classList.toggle("hidden");
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-xmark");
+        } else {
+          nav.classList.toggle("hidden");
+          icon.classList.remove("fa-xmark");
+          icon.classList.add("fa-bars");
+        }
       };
     </script>
   </head>
   <body>
     <!-- Header -->
-    <header>
-      <div>
-        <div id="logo">My Logo</div>
-
-        <button onclick="onMenuClick()">
-          <i class="material-icons">menu</i>
+    <header class="bg-gray-200 py-3 px-4 md:px-6">
+      <div class="flex flex-row items-center gap-2">
+        <button class="md:hidden" onclick="onMenuClick()">
+          <i id="nav-icon" class="fa-solid fa-bars fa-lg"></i>
         </button>
+        <div id="logo" class="text-base">My Logo</div>
       </div>
     </header>
 
-    <div>
+    <div class="flex md:flex-row flex-col h-full relative">
       <!-- Sidebar -->
-      <nav id="nav" class="bg-yellow-500">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-      </nav>
+      <div>
+        <nav
+          id="nav"
+          class="sidebar border-r flex md:flex-col flex-row md:gap-2 gap-4 p-2 md:pt-6 md:max-w-80 md:w-56 h-full justify-center md:justify-start md:block hidden"
+        >
+          <a
+            href="#"
+            class="text-base md:grid md:grid-cols-4 flex flex-row gap-3 items-center justify-center text-gray-700 hover:text-black font-medium p-2 hover:bg-blue-200 rounded-lg"
+          >
+            <i class="fa-solid fa-home col-span-1 text-right"></i>
+            <p class="col-span-3 text-left">Home</p></a
+          >
+          <a
+            href="#"
+            class="text-base md:grid md:grid-cols-4 flex flex-row gap-3 items-center justify-center text-gray-700 hover:text-black font-medium p-2 hover:bg-blue-200 rounded-lg"
+          >
+            <i class="fa-solid fa-user col-span-1 text-right"></i>
+            <p class="col-span-3 text-left">About</p></a
+          >
+          <a
+            href="#"
+            class="text-base md:grid md:grid-cols-4 flex flex-row gap-3 items-center justify-center text-gray-700 hover:text-black font-medium p-2 hover:bg-blue-200 rounded-lg"
+          >
+            <i class="fa-solid fa-address-book col-span-1 text-right"></i>
+            <p class="col-span-3 text-left">Contact</p></a
+          >
+        </nav>
+      </div>
 
-      <!-- Main Contents-->
-      <main class="bg-green-500">
+      <!-- Main Contents -->
+      <main class="bg-gray-100 md:overflow-auto min-h-[80vh]">
         <!-- Hero section -->
-        <section id="home">
-          <h1>Home</h1>
-          <button>Learn More</button>
+        <section
+          id="home"
+          class="relative bg-cover bg-center bg-[url('https://picsum.photos/1000')] flex justify-center items-center h-80 md:max-h-80 max-h-64"
+        >
+          <div class="absolute inset-0 bg-black opacity-40"></div>
+          <div class="relative text-center">
+            <p class="text-lg font-semibold text-white uppercase my-1">Demo</p>
+            <h1 class="text-4xl font-bold text-white uppercase">
+              Explore Hero Section
+            </h1>
+            <button
+              class="my-4 p-2 bg-blue-200 text-black text-sm font-medium uppercase rounded-lg w-64 shadow-xl hover:bg-blue-400 hover:font-semibold hover:scale-110 transform transition duration-500"
+            >
+              Learn More
+            </button>
+          </div>
         </section>
 
         <!-- Section -->
-        <section>
-          <div id="why">
-            <h2>Why</h2>
-            <div>
-              <img src="https://picsum.photos/1500" />
+        <section class="md:grid md:grid-cols-3 gap-4 p-6 mb-14">
+          <div class="bg-white rounded-lg p-6 md:my-0 my-4" id="why">
+            <h2 class="font-medium text-lg">Why</h2>
+            <div class="flex justify-center">
+              <img
+                src="https://picsum.photos/1500"
+                class="max-w-full w-full object-cover rounded-lg md:h-40 h-60 my-4"
+              />
             </div>
-            <p>
+            <p class="text-gray-700 font-medium text-sm">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Suspendisse sed fermentum quam, ut efficitur nisl.
             </p>
           </div>
-          <div id="what">
-            <h2>What</h2>
-            <div>
-              <img src="https://picsum.photos/1000" />
+          <div class="bg-white rounded-lg p-6 md:my-0 my-4" id="what">
+            <h2 class="font-medium text-lg">What</h2>
+            <div class="flex justify-center">
+              <img
+                src="https://picsum.photos/1000"
+                class="max-w-full w-full object-cover rounded-lg md:h-40 h-60 my-4"
+              />
             </div>
-            <p>
+            <p class="text-gray-700 font-medium text-sm">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Suspendisse sed fermentum quam, ut efficitur nisl.
             </p>
           </div>
-          <div id="how">
-            <h2>How</h2>
-            <div>
-              <img src="https://picsum.photos/1800" />
+          <div class="bg-white rounded-lg p-6 md:my-0 my-4" id="how">
+            <h2 class="font-medium text-lg">How</h2>
+            <div class="flex justify-center">
+              <img
+                src="https://picsum.photos/1800"
+                class="max-w-full w-full object-cover rounded-lg md:h-40 h-60 my-4"
+              />
             </div>
-            <p>
+            <p class="text-gray-700 font-medium text-sm">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Suspendisse sed fermentum quam, ut efficitur nisl.
             </p>
@@ -101,14 +158,16 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-red-500">
-      <div>
-        <nav>
-          <a href="#">Facebook</a>
-          <a href="#">Twitter</a>
-          <a href="#">Instagram</a>
+    <footer class="py-3 md:px-6 bg-black text-white">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-2">
+        <div class="mx-auto md:mx-0">
+          <p class="text-sm">&copy; 2023 Prabhansh Jain</p>
+        </div>
+        <nav class="flex gap-3 items-center">
+          <a href="#"><i class="fa-brands fa-facebook fa-xl"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter fa-xl"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram fa-xl"></i></a>
         </nav>
-        <div>&copy; 2023 My Company</div>
       </div>
     </footer>
   </body>
