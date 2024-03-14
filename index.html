@@ -21,12 +21,19 @@
       }
       body {
         position: relative;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        height: 100%;
         min-height: 100vh;
+        display: flex;
+        flex-direction: column;
       }
+      main {
+        flex-grow: 1;
+      }
+
       footer {
-        position: absolute;
-        width: 100%;
-        bottom: 0;
+        flex-shrink: 0;
       }
       @media (min-width: 1280px) {
       }
@@ -60,12 +67,12 @@
       </div>
     </header>
 
-    <div class="flex md:flex-row flex-col h-full relative">
+    <div class="flex md:flex-row flex-col relative">
       <!-- Sidebar -->
-      <div>
+      <div class="md:max-w-80 md:w-2/3 text-center">
         <nav
           id="nav"
-          class="border-r flex md:flex-col flex-row md:gap-2 gap-4 p-2 md:pt-6 md:max-w-80 md:w-56 h-full justify-center md:justify-start md:block hidden"
+          class="flex md:flex-col flex-row md:gap-2 gap-4 p-2 md:pt-6 justify-center md:justify-start md:block hidden"
         >
           <!-- Sidebar Links -->
           <a
@@ -93,11 +100,11 @@
       </div>
 
       <!-- Main Contents -->
-      <main class="bg-gray-100 md:overflow-auto min-h-[90vh]">
+      <main class="bg-gray-100 md:overflow-auto">
         <!-- Hero section -->
         <section
           id="home"
-          class="relative bg-cover bg-center bg-[url('https://picsum.photos/1000')] flex justify-center items-center h-72 md:max-h-80 max-h-64"
+          class="relative bg-cover bg-center bg-[url('https://picsum.photos/1000')] flex justify-center items-center h-64 md:max-h-80 max-h-64"
         >
           <div class="absolute inset-0 bg-black opacity-40"></div>
           <div class="relative text-center">
